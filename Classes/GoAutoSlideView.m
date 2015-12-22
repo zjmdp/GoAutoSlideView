@@ -44,26 +44,14 @@
     return self;
 }
 
-- (void)setFrame:(CGRect)frame{
-    [super setFrame:frame];
-    [self.scrollView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds) , CGRectGetHeight(self.bounds))];
-}
-
-- (void)setBounds:(CGRect)bounds{
-    [super setBounds:bounds];
-    [self.scrollView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds) , CGRectGetHeight(self.bounds))];
-    self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - 20);
-}
-
 - (void)baseInit{
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.contentMode = UIViewContentModeCenter;
+    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.delegate = self;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.bounces = NO;
-    self.scrollView.autoresizesSubviews = YES;
     [self addSubview:self.scrollView];
     
     self.contentViews = [NSMutableArray new];
@@ -78,7 +66,7 @@
     }
     if (!self.pageControl) {
         self.pageControl = [[UIPageControl alloc] init];
-        self.pageControl.autoresizingMask = 0xFF;
+        self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - 20);
         [self addSubview:self.pageControl];
     }
