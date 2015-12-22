@@ -46,21 +46,26 @@
 
 - (void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    [self.scrollView setFrame:self.bounds];
+    [self.scrollView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds) , CGRectGetHeight(self.bounds))];
+}
+
+- (void)setBounds:(CGRect)bounds{
+    [super setBounds:bounds];
+    [self.scrollView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds) , CGRectGetHeight(self.bounds))];
+    self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - 20);
 }
 
 - (void)baseInit{
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.autoresizingMask = 0xFF;
     self.scrollView.contentMode = UIViewContentModeCenter;
     self.scrollView.delegate = self;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.bounces = NO;
+    self.scrollView.autoresizesSubviews = YES;
     [self addSubview:self.scrollView];
     
-    self.autoresizesSubviews = YES;
     self.contentViews = [NSMutableArray new];
 }
 
@@ -73,6 +78,7 @@
     }
     if (!self.pageControl) {
         self.pageControl = [[UIPageControl alloc] init];
+        self.pageControl.autoresizingMask = 0xFF;
         self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - 20);
         [self addSubview:self.pageControl];
     }
@@ -158,12 +164,12 @@
             }
         }
         if (pageCount > 1) {
-            [self.scrollView setContentSize:CGSizeMake(CGRectGetWidth(self.frame) * 3, CGRectGetHeight(self.frame))];
-            [self.scrollView setContentOffset:CGPointMake(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+            [self.scrollView setContentSize:CGSizeMake(CGRectGetWidth(self.bounds) * 3, CGRectGetHeight(self.bounds))];
+            [self.scrollView setContentOffset:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
             [self rorateViewsRight];
         }else if(pageCount == 1){
             [self.scrollView setContentSize:self.bounds.size];
-            [self.scrollView setContentOffset:CGPointMake(0, CGRectGetHeight(self.frame))];
+            [self.scrollView setContentOffset:CGPointMake(0, CGRectGetHeight(self.bounds))];
             UIView *view = [self.contentViews firstObject];
             [view setFrame:self.bounds];
         }

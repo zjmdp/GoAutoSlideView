@@ -3,7 +3,7 @@
 `GoAutoSlideView` extends `UIScrollView` by featuring *infinitely* and *automatically* slide.
 
 #ScreenShot
-![Alt text](./screenshot/screenshot.gif "screenshot")
+![Screenshot](./Screenshots/screenshot.gif "screenshot")
 
 ## Installation
 ###CocoaPods
@@ -64,7 +64,7 @@ Not available now! Comming shortly.
 
 ## History
 
-* 1.0: First commit.
+* 0.1: First commit.
 
 ## Credits
 
