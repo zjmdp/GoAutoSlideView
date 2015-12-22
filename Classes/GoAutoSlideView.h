@@ -55,7 +55,7 @@
  */
 @property (nonatomic, weak) id<GoAutoSlideViewDelegate> slideDelegate;
 /**
- *  The period time the auto slide view slide.
+ *  The period time the auto slide view slide. If not set, page views will not be slide automatically;
  */
 @property (nonatomic, assign) NSTimeInterval slideDuration;
 /**
