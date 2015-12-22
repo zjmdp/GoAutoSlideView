@@ -9,7 +9,7 @@
 ###CocoaPods
 ```ruby
 
-pod 'GoAutoSlideView', '~> 0.1'
+pod 'GoAutoSlideView', '~> 0.2'
 
 ```
 
@@ -64,10 +64,6 @@ pod 'GoAutoSlideView', '~> 0.1'
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## History
-
-* 0.1: First commit.
 
 ## Credits
 
