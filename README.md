@@ -7,8 +7,11 @@
 
 ## Installation
 ###CocoaPods
+```ruby
 
-Not available now! Comming shortly.
+pod 'GoAutoSlideView', '~> 0.1'
+
+```
 
 ###Manually
 1. Downloads the source files in directory `GoAutoSlideView/Classes`.
