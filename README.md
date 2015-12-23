@@ -1,5 +1,10 @@
 # GoAutoSlideView
 
+[![Version](https://img.shields.io/cocoapods/v/GoAutoSlideView.svg?style=flat)](http://cocoapods.org/pods/GoAutoSlideView)
+[![License](https://img.shields.io/cocoapods/l/GoAutoSlideView.svg?style=flat)](http://cocoapods.org/pods/GoAutoSlideView)
+[![Platform](https://img.shields.io/cocoapods/p/GoAutoSlideView.svg?style=flat)](http://cocoapods.org/pods/GoAutoSlideView)
+
+
 `GoAutoSlideView` extends `UIScrollView` by featuring *infinitely* and *automatically* slide.
 
 #ScreenShot
