@@ -14,7 +14,7 @@
 ###CocoaPods
 ```ruby
 
-pod 'GoAutoSlideView', '~> 0.2'
+pod 'GoAutoSlideView', '~> 0.3'
 
 ```
 
