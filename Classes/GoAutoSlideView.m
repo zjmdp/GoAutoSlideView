@@ -66,20 +66,16 @@
     }
     if (!self.pageControl) {
         self.pageControl = [[UIPageControl alloc] init];
+        self.pageControl.hidesForSinglePage = YES;
         self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - 20);
         [self addSubview:self.pageControl];
     }
     if ([self.slideDataSource respondsToSelector:@selector(numberOfPagesInGoAutoSlideView:)]) {
         NSInteger pageCount = [self.slideDataSource numberOfPagesInGoAutoSlideView:self];
-        if (pageCount > 1) {
-            self.pageControl.numberOfPages = pageCount;
-            [self.pageControl setHidden:NO];
-        }else{
-            [self.pageControl setHidden:YES];
-        }
+        self.pageControl.numberOfPages = pageCount;
     }else{
-        [self.pageControl setHidden:YES];
+        self.pageControl.numberOfPages = 0;
     }
     if (self.currentPageIndicatorColor != nil) {
         [self.pageControl setCurrentPageIndicatorTintColor:self.currentPageIndicatorColor];
@@ -87,9 +83,9 @@
         [self.pageControl setCurrentPageIndicatorTintColor:[UIColor blueColor]];
     }
     if (self.pageIndicatorColor != nil) {
-        [self setPageIndicatorColor:self.pageIndicatorColor];
+        [self.pageControl setPageIndicatorTintColor:self.pageIndicatorColor];
     }else{
-        [self setPageIndicatorColor:[UIColor whiteColor]];
+        [self.pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
     }
 }
 
@@ -169,12 +165,12 @@
 
 - (void)setSlideDuration:(NSTimeInterval)slideDuration{
     NSAssert(slideDuration > 0, @"slideDuration must be greater than 0");
-    if (_slideTimer != nil) {
-        [_slideTimer invalidate];
-        _slideTimer = nil;
-    }
     _slideDuration = slideDuration;
-    _slideTimer = [NSTimer scheduledTimerWithTimeInterval:self.slideDuration
+    if (self.slideTimer != nil) {
+        [self.slideTimer invalidate];
+        self.slideTimer = nil;
+    }
+    self.slideTimer = [NSTimer scheduledTimerWithTimeInterval:self.slideDuration
                                                        target:self
                                                      selector:@selector(onTimerFired)
                                                      userInfo:nil
