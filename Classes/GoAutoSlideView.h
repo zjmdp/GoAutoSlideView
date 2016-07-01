@@ -49,11 +49,11 @@
 /**
  *  The object that acts as the data source of the auto slide view.
  */
-@property (nonatomic, weak) id<GoAutoSlideViewDataSource> slideDataSource;
+@property (nonatomic, weak, nullable) id<GoAutoSlideViewDataSource> slideDataSource;
 /**
  *  The object that acts as the delegate of the auto slide view.
  */
-@property (nonatomic, weak) id<GoAutoSlideViewDelegate> slideDelegate;
+@property (nonatomic, weak, nullable) id<GoAutoSlideViewDelegate> slideDelegate;
 /**
  *  The period time the auto slide view slide. If not set, page views will not be slide automatically;
  */
@@ -74,5 +74,11 @@
  *  Loads/Reloads the page view of the auto slide view.
  */
 - (void)reloadData;
+/**
+ *  Get current pages count.
+ *
+ *  @return The pages count of the auto slide view.
+ */
+- (NSInteger)getPagesCount;
 
 @end

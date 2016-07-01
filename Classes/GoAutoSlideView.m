@@ -12,8 +12,6 @@
 
 @property (nonatomic, strong) NSTimer *slideTimer;
 
-@property (nonatomic, assign) NSInteger pageCount;
-
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (nonatomic, strong) NSMutableArray *contentViews;
@@ -91,7 +89,7 @@
 
 - (void)onTimerFired{
     CGPoint newOffset = CGPointMake(self.scrollView.contentOffset.x + CGRectGetWidth(self.bounds), self.scrollView.contentOffset.y);
-    [self.scrollView setContentOffset:newOffset animated:YES];
+    [self.scrollView setContentOffset:newOffset animated:NO];
 }
 
 - (void)resetSubViewsFrame{
@@ -106,22 +104,22 @@
     }
 }
 
-- (void)rorateViewsRight{
+- (void)rotateViewsRight {
     UIView *lastView = [self.contentViews lastObject];
     [self.contentViews removeLastObject];
     [self.contentViews insertObject:lastView atIndex:0];
     [self resetSubViewsFrame];
 }
 
-- (void)rorateViewsLeft{
+- (void)rotateViewsLeft {
     UIView *firstView = [self.contentViews firstObject];
     [self.contentViews removeObjectAtIndex:0];
     [self.contentViews addObject:firstView];
     [self resetSubViewsFrame];
 }
 
-- (void)onPageTaped:(UITapGestureRecognizer *)reconnizer{
-    UIView *tapedView = reconnizer.view;
+- (void)onPageTaped:(UITapGestureRecognizer *)recognizer {
+    UIView *tapedView = recognizer.view;
     if ([self.slideDelegate respondsToSelector:@selector(goAutoSlideView:didTapViewPage:)]) {
         [self.slideDelegate goAutoSlideView:self didTapViewPage:tapedView.tag];
     }
@@ -150,7 +148,7 @@
         if (pageCount > 1) {
             [self.scrollView setContentSize:CGSizeMake(CGRectGetWidth(self.bounds) * 3, CGRectGetHeight(self.bounds))];
             [self.scrollView setContentOffset:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
-            [self rorateViewsRight];
+            [self rotateViewsRight];
         }else if(pageCount == 1){
             [self.scrollView setContentSize:self.bounds.size];
             [self.scrollView setContentOffset:CGPointMake(0, CGRectGetHeight(self.bounds))];
@@ -161,6 +159,10 @@
     
     [self resetPageControl];
     [self startAutoScroll];
+}
+
+- (NSInteger)getPagesCount{
+    return self.contentViews.count;
 }
 
 - (void)setSlideDuration:(NSTimeInterval)slideDuration{
@@ -218,11 +220,11 @@
         if (scrollView.contentOffset.x == 0) {
             CGPoint newOffset = CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
             [self.scrollView setContentOffset:newOffset];
-            [self rorateViewsRight];
+            [self rotateViewsRight];
         }else if(scrollView.contentOffset.x == CGRectGetWidth(self.bounds) * 2){
             CGPoint newOffset = CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
             [self.scrollView setContentOffset:newOffset];
-            [self rorateViewsLeft];
+            [self rotateViewsLeft];
         }
     }
     scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
