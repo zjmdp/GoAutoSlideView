@@ -137,6 +137,7 @@
             if ([self.slideDataSource respondsToSelector:@selector(goAutoSlideView:viewAtPage:)]) {
                 UIView *pageView = [self.slideDataSource goAutoSlideView:self viewAtPage:i];
                 NSAssert(pageView != nil, @"page view can not be nil!");
+                pageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                 [pageView setUserInteractionEnabled:YES];
                 UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onPageTaped:)];
                 [pageView addGestureRecognizer:tapRecognizer];
