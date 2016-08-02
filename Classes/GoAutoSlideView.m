@@ -45,13 +45,14 @@
 - (void)baseInit{
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView.pagingEnabled = YES;
+    self.scrollView.scrollsToTop = NO;
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.delegate = self;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.bounces = NO;
     [self addSubview:self.scrollView];
-    
+
     self.contentViews = [NSMutableArray new];
 }
 
