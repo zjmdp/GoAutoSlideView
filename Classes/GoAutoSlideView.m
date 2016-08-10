@@ -140,8 +140,10 @@
                 NSAssert(pageView != nil, @"page view can not be nil!");
                 pageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                 [pageView setUserInteractionEnabled:YES];
-                UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onPageTaped:)];
-                [pageView addGestureRecognizer:tapRecognizer];
+                if([self.slideDelegate respondsToSelector:@selector(goAutoSlideView:didTapViewPage:)]){
+                    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onPageTaped:)];
+                    [pageView addGestureRecognizer:tapRecognizer];
+                }
                 [pageView setTag:i];
                 [self.contentViews addObject:pageView];
                 [self.scrollView addSubview:pageView];
