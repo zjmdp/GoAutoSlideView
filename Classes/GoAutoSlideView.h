@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class GoAutoSlideView;
+
 @protocol GoAutoSlideViewDataSource <NSObject>
 
 @required
@@ -19,7 +22,7 @@
  *
  *  @return The number of pages of in auto slide view.
  */
-- (NSInteger)numberOfPagesInGoAutoSlideView:(nonnull GoAutoSlideView *)goAutoSlideView;
+- (NSInteger)numberOfPagesInGoAutoSlideView:(GoAutoSlideView *)goAutoSlideView;
 /**
  *  Asks the data source for a page view at a particular location of the auto slide view.
  *
@@ -28,7 +31,7 @@
  *
  *  @return A view for the specified page. An assertion is raised if you return nil.
  */
-- (nonnull UIView *)goAutoSlideView:(nonnull GoAutoSlideView *)goAutoSlideView viewAtPage:(NSInteger)page;
+- (nonnull UIView *)goAutoSlideView:(GoAutoSlideView *)goAutoSlideView viewAtPage:(NSInteger)page;
 
 @end
 
@@ -41,7 +44,7 @@
  *  @param goAutoSlideView The auto slide view informing the new page view tapped.
  *  @param page            An index locating the new tapped page view in auto slide view.
  */
-- (void)goAutoSlideView:(nonnull GoAutoSlideView *)goAutoSlideView didTapViewPage:(NSInteger)page;
+- (void)goAutoSlideView:(GoAutoSlideView *)goAutoSlideView didTapViewPage:(NSInteger)page;
 
 @end
 
@@ -81,4 +84,5 @@
  */
 - (NSInteger)getPagesCount;
 
+NS_ASSUME_NONNULL_END
 @end
