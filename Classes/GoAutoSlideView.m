@@ -102,6 +102,9 @@
         UIView *currentView = [self.contentViews objectAtIndex:1];
         NSInteger currentPage = currentView.tag;
         [self.pageControl setCurrentPage:currentPage];
+        if([self.slideDelegate respondsToSelector:@selector(goAutoSlideView:didMoveToPage:)]){
+            [self.slideDelegate goAutoSlideView:self didMoveToPage:currentPage];
+        }
     }
 }
 
@@ -234,4 +237,15 @@
     scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
 }
 
+- (UIView *)viewAtPage:(NSInteger)page {
+    __block  UIView *pageView;
+    [self.contentViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIView *view = obj;
+        if(view.tag == page){
+            pageView = view;
+            *stop = YES;
+        }
+    }];
+    return pageView;
+}
 @end

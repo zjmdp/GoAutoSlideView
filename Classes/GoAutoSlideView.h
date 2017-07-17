@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param page            An index locating the new tapped page view in auto slide view.
  */
 - (void)goAutoSlideView:(GoAutoSlideView *)goAutoSlideView didTapViewPage:(NSInteger)page;
+- (void)goAutoSlideView:(GoAutoSlideView *)goAutoSlideView didMoveToPage:(NSInteger)page;
 
 @end
 
@@ -83,6 +84,13 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return The pages count of the auto slide view.
  */
 - (NSInteger)getPagesCount;
+
+/**
+ * Get view at specified page
+ * @param page The page of the view
+ * @return The view of the specified page
+ */
+- (UIView *)viewAtPage:(NSInteger)page;
 
 NS_ASSUME_NONNULL_END
 @end
