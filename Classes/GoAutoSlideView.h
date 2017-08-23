@@ -75,6 +75,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong, nullable) UIColor *pageIndicatorColor;
 /**
+ * The bottom margin of indicator.
+ */
+@property (nonatomic, assign) CGFloat indicatorBottomMargin;
+/**
  *  Loads/Reloads the page view of the auto slide view.
  */
 - (void)reloadData;

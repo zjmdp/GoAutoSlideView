@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "GoAutoSlideView"
-  s.version      = "0.9"
+  s.version      = "1.0"
   s.summary      = "GoAutoSlideView extends UIScrollView by featuring infinitely and automatically slide."
 
   # This description is used to generate tags and improve search results.
@@ -73,7 +73,7 @@ GoAutoSlideView which is well documented has neat APIs to implement infinite and
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/zjmdp/GoAutoSlideView.git", :tag => "0.9" }
+  s.source       = { :git => "https://github.com/zjmdp/GoAutoSlideView.git", :tag => "1.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -67,7 +67,7 @@
         self.pageControl = [[UIPageControl alloc] init];
         self.pageControl.hidesForSinglePage = YES;
         self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - 20);
+        self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - (self.indicatorBottomMargin > 0 ? self.indicatorBottomMargin : 20));
         [self addSubview:self.pageControl];
     }
     if ([self.slideDataSource respondsToSelector:@selector(numberOfPagesInGoAutoSlideView:)]) {
