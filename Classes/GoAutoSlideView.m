@@ -12,8 +12,6 @@
 
 @property (nonatomic, strong) NSTimer *slideTimer;
 
-@property (nonatomic, strong) UIPageControl *pageControl;
-
 @property (nonatomic, strong) NSMutableArray *contentViews;
 
 @property (nonatomic, strong) UIScrollView *scrollView;;
@@ -64,7 +62,7 @@
         return;
     }
     if (!self.pageControl) {
-        self.pageControl = [[UIPageControl alloc] init];
+        self->_pageControl = [[UIPageControl alloc] init];
         self.pageControl.hidesForSinglePage = YES;
         self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         self.pageControl.center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) - (self.indicatorBottomMargin > 0 ? self.indicatorBottomMargin : 20));
