@@ -79,6 +79,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) CGFloat indicatorBottomMargin;
 /**
+ * The page control of the slide view.
+ */
+@property (nonatomic, strong, readonly) UIPageControl *pageControl;
+/**
  *  Loads/Reloads the page view of the auto slide view.
  */
 - (void)reloadData;
